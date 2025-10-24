@@ -9,7 +9,9 @@ import java.io.*;
  * @version {Put Something Here}
  */
 public class Radix {
-
+    
+    private RandomAccessFile input;
+    private PrintWriter output;
     /**
      * Create a new Radix object.
      * 
@@ -21,16 +23,29 @@ public class Radix {
      * @throws IOException
      */
     public Radix(RandomAccessFile theFile, PrintWriter s) throws IOException {
+        input = theFile;
+        output = s;
+        Integer[] arr = new Integer[(int)input.length()];
+        
+        for (int index = 0; index < arr.length; index++) {
+            arr[index] = input.readInt();
+        }
+        
+        
+        radixSort(arr, 3, 10);
     }
 
 
     /**
      * Do a Radix sort
+     * @param A The array of all integers from the original file
+     * @param k The number of digits being analyzed
+     * @param r The numbers being analyzed (0-9)
      *
      * @throws IOException
      */
     private void radixSort(Integer[] A, int k, int r) throws IOException {
-        Integer[] B = new Integer[A.length];
+        Integer[] B = new Integer[A.length]; //B is the array of integers we are putting into the output file
         int[] count = new int[r]; // Count[i] stores number of records with
                                   // digit value i
         int i, j, rtok;
@@ -60,8 +75,11 @@ public class Radix {
             }
 
             for (j = 0; j < A.length; j++) {
-                A[j] = B[j]; // Copy B back
+                A[j] = B[j]; // Copy B back into (Change to do it through files
             }
+        }
+        for (int index = 0; index < A.length; index++) {
+            output.print(B[index]);
         }
     }
 }
