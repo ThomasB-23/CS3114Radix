@@ -5,13 +5,18 @@ import java.io.*;
 // -------------------------------------------------------------------------
 /**
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author Thomas Bongiorno (thomasb23) and Charles Patton (charpatt5414)
+ * @version Milestone 1
  */
 public class Radix {
-    
-    private RandomAccessFile input;
-    private PrintWriter output;
+
+    private RandomAccessFile file;
+    private PrintWriter stats;
+
+    private static final int RECORD_SIZE = 8;
+    private static final int RADIX = 256;
+    private static final int NUM_PASSES = 8;
+
     /**
      * Create a new Radix object.
      * 
@@ -23,63 +28,72 @@ public class Radix {
      * @throws IOException
      */
     public Radix(RandomAccessFile theFile, PrintWriter s) throws IOException {
-        input = theFile;
-        output = s;
-        Integer[] arr = new Integer[(int)input.length()];
-        
-        for (int index = 0; index < arr.length; index++) {
-            arr[index] = input.readInt();
-        }
-        
-        
-        radixSort(arr, 3, 10);
+        file = theFile;
+        stats = s;
+
+        long totalRecords = file.length() / RECORD_SIZE;
+        RandomAccessFile temp = new RandomAccessFile("temp.bin", "rw");
+
+        radixSort(temp, totalRecords);
+        temp.close();
     }
 
 
     /**
      * Do a Radix sort
-     * @param A The array of all integers from the original file
-     * @param k The number of digits being analyzed
-     * @param r The numbers being analyzed (0-9)
-     *
+     * 
+     * @param tempFile
+     *            temporary file used during sorting
+     * @param totalRecords
+     *            number of records (each 8 bytes)
      * @throws IOException
      */
-    private void radixSort(Integer[] A, int k, int r) throws IOException {
-        Integer[] B = new Integer[A.length]; //B is the array of integers we are putting into the output file
-        int[] count = new int[r]; // Count[i] stores number of records with
-                                  // digit value i
-        int i, j, rtok;
+    private void radixSort(RandomAccessFile tempFile, long totalRecords)
+        throws IOException {
+        byte[] B = new byte[(int)totalRecords * RECORD_SIZE];
+        int[] count = new int[RADIX];
+        byte[] record = new byte[RECORD_SIZE];
 
-        for (i = 0, rtok = 1; i < k; i++, rtok *= r) { // For k digits
-            for (j = 0; j < r; j++) {
-                count[j] = 0; // Initialize count
+        // For number of records
+        for (int pass = NUM_PASSES - 1; pass >= 0; pass--) {
+            // Initialize Count
+            for (int i = 0; i < RADIX; i++) {
+                count[i] = 0;
             }
 
-            // Count the number of records for each bin on this pass
-            for (j = 0; j < A.length; j++) {
-                count[(A[j] / rtok) % r]++;
+            // Count occurences of each byte value
+            file.seek(0);
+            for (long rec = 0; rec < totalRecords; rec++) {
+                file.readFully(record);
+                int b = record[pass] & 0xFF;
+                count[b]++;
             }
 
-            // After processing, count[j] will be index in B for first slot of
-            // bin j.
-            int total = A.length;
-            for (j = r - 1; j >= 0; j--) {
-                total -= count[j];
-                count[j] = total;
+            // Transform count into starting positions
+            int total = 0;
+            for (int i = 0; i < RADIX; i++) {
+                int oldCount = count[i];
+                count[i] = total;
+                total += oldCount;
             }
 
-            // Put records into bins, working from left to right
-            for (j = 0; j < A.length; j++) {
-                B[count[(A[j] / rtok) % r]] = A[j];
-                count[(A[j] / rtok) % r] = count[(A[j] / rtok) % r] + 1;
+            // Put records into bins
+            file.seek(0);
+            for (long rec = 0; rec < totalRecords; rec++) {
+                file.readFully(record);
+                int b = record[pass] & 0xFF;
+                int pos = count[b] * RECORD_SIZE;
+                System.arraycopy(record, 0, B, pos, RECORD_SIZE);
+                count[b]++;
             }
 
-            for (j = 0; j < A.length; j++) {
-                A[j] = B[j]; // Copy B back into (Change to do it through files
+            // Copy B back into the file
+            file.seek(0);
+            for (long rec = 0; rec < totalRecords; rec++) {
+                int pos = (int)rec * RECORD_SIZE;
+                file.write(B, pos, RECORD_SIZE);
             }
-        }
-        for (int index = 0; index < A.length; index++) {
-            output.print(B[index]);
+
         }
     }
 }
