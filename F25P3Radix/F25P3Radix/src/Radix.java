@@ -14,10 +14,11 @@ public class Radix {
     private PrintWriter stats;
     private int diskReads;
     private int diskWrites;
-
+    private long totalRecords;
+    
     private static final int RECORD_SIZE = 8;
     private static final int RADIX = 256;
-    private static final int NUM_PASSES = 8;
+    private static byte[] mem;
 
     /**
      * Create a new Radix object.
@@ -32,8 +33,9 @@ public class Radix {
     public Radix(RandomAccessFile theFile, PrintWriter s) throws IOException {
         file = theFile;
         stats = s;
-
-        long totalRecords = file.length() / RECORD_SIZE;
+        mem = new byte[900000];
+        
+        totalRecords = file.length() / RECORD_SIZE;
         RandomAccessFile temp = new RandomAccessFile("temp.bin", "rw");
 
         
@@ -50,7 +52,6 @@ public class Radix {
         stats.println("Disk Reads: " + diskReads);
 
         temp.close();
-        stats.close();
         stats.flush();
     }
 
@@ -66,50 +67,55 @@ public class Radix {
      */
     private void radixSort(RandomAccessFile tempFile, long totalRecords)
         throws IOException {
-        byte[] B = new byte[(int)totalRecords * RECORD_SIZE];
-        int[] count = new int[RADIX];
-        byte[] record = new byte[RECORD_SIZE];
-
+        ByteBuffer B = ByteBuffer.allocate((int)totalRecords * RECORD_SIZE);
+        IntBuffer count = IntBuffer.allocate(RADIX);
+        ByteBuffer record = ByteBuffer.allocate(RECORD_SIZE);
+        
         // For number of records
-        for (int pass = 0; pass < NUM_PASSES; pass++) {
+        for (int pass = 0; pass < 4; pass++) {
             // Initialize Count
             for (int i = 0; i < RADIX; i++) {
-                count[i] = 0;
+                count.put(i, 0);
             }
 
             // Count occurences of each byte value
             file.seek(0);
             for (long rec = 0; rec < totalRecords; rec++) {
-                file.readFully(record);
-                int b = record[pass] & 0xFF;
-                count[b]++;
+                file.readFully(record.array());
+                int b = record.get(3 - pass) & 0xFF;
+                count.put(b, count.get(b) + 1);
                 diskReads++;
+                record.clear();
             }
 
             // Transform count into starting positions
-            int total = 0;
-            for (int i = 0; i < RADIX; i++) {
-                int oldCount = count[i];
-                count[i] = total;
-                total += oldCount;
+            int total = (int) totalRecords;
+            for (int i = RADIX - 1; i >= 0; i--) {
+                int oldCount = count.get(i);
+                total -= oldCount;
+                count.put(i, total);
             }
 
             // Put records into bins
             file.seek(0);
             for (long rec = 0; rec < totalRecords; rec++) {
-                file.readFully(record);
-                int b = record[pass] & 0xFF;
-                int pos = count[b] * RECORD_SIZE;
-                System.arraycopy(record, 0, B, pos, RECORD_SIZE);
-                count[b]++;
+                record.clear();
+                file.readFully(record.array());
+                int b = record.get(3 - pass) & 0xFF;
+                int pos = count.get(b) * RECORD_SIZE;
+                B.position(pos);
+                B.put(record);
+                count.put(b, count.get(b) + 1);
                 diskReads++;
             }
 
             // Copy B back into the file
             file.seek(0);
+            B.position(0);
+            byte[] tempArr = new byte[RECORD_SIZE];
             for (long rec = 0; rec < totalRecords; rec++) {
-                int pos = (int)rec * RECORD_SIZE;
-                file.write(B, pos, RECORD_SIZE);
+                B.get(tempArr);
+                file.write(tempArr);
                 diskWrites++;
             }
 
