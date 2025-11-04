@@ -12,6 +12,8 @@ public class Radix {
 
     private RandomAccessFile file;
     private PrintWriter stats;
+    private int diskReads;
+    private int diskWrites;
 
     private static final int RECORD_SIZE = 8;
     private static final int RADIX = 256;
@@ -34,8 +36,22 @@ public class Radix {
         long totalRecords = file.length() / RECORD_SIZE;
         RandomAccessFile temp = new RandomAccessFile("temp.bin", "rw");
 
+        
+
+        diskReads = 0;
+        diskWrites = 0;
+
         radixSort(temp, totalRecords);
+        stats.println("The file input.txt is sorted with a size of " + ""
+            + " bytes!");
+        stats.println("Number of Blocks in memory pool: " + totalRecords);
+        stats.println("Size of Blocks in Memery Pool: " + RECORD_SIZE);
+        stats.println("Disk Writes: " + diskWrites);
+        stats.println("Disk Reads: " + diskReads);
+
         temp.close();
+        stats.close();
+        stats.flush();
     }
 
 
@@ -55,7 +71,7 @@ public class Radix {
         byte[] record = new byte[RECORD_SIZE];
 
         // For number of records
-        for (int pass = NUM_PASSES - 1; pass >= 0; pass--) {
+        for (int pass = 0; pass < NUM_PASSES; pass++) {
             // Initialize Count
             for (int i = 0; i < RADIX; i++) {
                 count[i] = 0;
@@ -67,6 +83,7 @@ public class Radix {
                 file.readFully(record);
                 int b = record[pass] & 0xFF;
                 count[b]++;
+                diskReads++;
             }
 
             // Transform count into starting positions
@@ -85,6 +102,7 @@ public class Radix {
                 int pos = count[b] * RECORD_SIZE;
                 System.arraycopy(record, 0, B, pos, RECORD_SIZE);
                 count[b]++;
+                diskReads++;
             }
 
             // Copy B back into the file
@@ -92,6 +110,7 @@ public class Radix {
             for (long rec = 0; rec < totalRecords; rec++) {
                 int pos = (int)rec * RECORD_SIZE;
                 file.write(B, pos, RECORD_SIZE);
+                diskWrites++;
             }
 
         }

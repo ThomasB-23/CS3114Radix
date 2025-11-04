@@ -13,11 +13,13 @@ import student.TestCase;
  */
 public class RadixProjTest extends TestCase {
     private CheckFile fileChecker;
+    private RadixProj idk;
 
     /**
      * This method sets up the tests that follow.
      */
     public void setUp() {
+        idk = new RadixProj();
         fileChecker = new CheckFile();
     }
 
@@ -45,11 +47,10 @@ public class RadixProjTest extends TestCase {
     public void testSortA() throws Exception {
         FileGenerator it = new FileGenerator();
         it.generateFile("input.txt", 1, "a");
-        RandomAccessFile testFile = new RandomAccessFile("input.txt", "rw");
-        PrintWriter stats = new PrintWriter(new BufferedWriter(new FileWriter(
-            "testStats.txt", true)));
-        new Radix(testFile, stats);
+        String[] arr = {"input.txt", "testStats.txt"};
+        idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
+        assertTrue(fileChecker.checkFileStrong("input.txt"));
     }
 
 
@@ -62,11 +63,10 @@ public class RadixProjTest extends TestCase {
     public void testSortB() throws Exception {
         FileGenerator it = new FileGenerator();
         it.generateFile("input.txt", 1, "b");
-        RandomAccessFile testFile = new RandomAccessFile("input.txt", "rw");
-        PrintWriter stats = new PrintWriter(new BufferedWriter(new FileWriter(
-            "testStats.txt", true)));
-        new Radix(testFile, stats);
+        String[] arr = {"input.txt", "testStats.txt"};
+        idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
+        assertTrue(fileChecker.checkFileStrong("input.txt"));
     }
 
 
@@ -79,11 +79,10 @@ public class RadixProjTest extends TestCase {
     public void testSortC() throws Exception {
         FileGenerator it = new FileGenerator();
         it.generateFile("input.txt", 1, "c");
-        RandomAccessFile testFile = new RandomAccessFile("input.txt", "rw");
-        PrintWriter stats = new PrintWriter(new BufferedWriter(new FileWriter(
-            "testStats.txt", true)));
-        new Radix(testFile, stats);
+        String[] arr = {"input.txt", "testStats.txt"};
+        idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
+        assertTrue(fileChecker.checkFileStrong("input.txt"));
     }
 
 
@@ -96,10 +95,9 @@ public class RadixProjTest extends TestCase {
     public void testSortD() throws Exception {
         FileGenerator it = new FileGenerator();
         it.generateFile("input.txt", 1, "d");
-        RandomAccessFile testFile = new RandomAccessFile("input.txt", "rw");
-        PrintWriter stats = new PrintWriter(new BufferedWriter(new FileWriter(
-            "testStats.txt", true)));
-        new Radix(testFile, stats);
+        String[] arr = {"input.txt", "testStats.txt"};
+        idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
+        assertTrue(fileChecker.checkFileStrong("input.txt"));
     }
 }
