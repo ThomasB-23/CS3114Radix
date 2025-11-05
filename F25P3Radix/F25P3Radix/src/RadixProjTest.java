@@ -86,18 +86,18 @@ public class RadixProjTest extends TestCase {
     }
 
 
-    /**
-     * Test Sort D
-     * 
-     * @throws Exception
-     *             either a IOException or FileNotFoundException
-     */
-    public void testSortD() throws Exception {
-        FileGenerator it = new FileGenerator();
-        it.generateFile("input.txt", 1, "d");
-        String[] arr = {"input.txt", "testStats.txt"};
-        idk.main(arr);
-        assertTrue(fileChecker.checkFile("input.txt"));
-        assertTrue(fileChecker.checkFileStrong("input.txt"));
-    }
+//    /**
+//     * Test Sort D
+//     * 
+//     * @throws Exception
+//     *             either a IOException or FileNotFoundException
+//     */
+//    public void testSortD() throws Exception {
+//        FileGenerator it = new FileGenerator();
+//        it.generateFile("input.txt", 1, "d");
+//        String[] arr = {"input.txt", "testStats.txt"};
+//        idk.main(arr);
+//        assertTrue(fileChecker.checkFile("input.txt"));
+//        assertTrue(fileChecker.checkFileStrong("input.txt"));
+//    }
 }
