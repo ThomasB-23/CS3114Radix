@@ -2,72 +2,9 @@ Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 12
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 39
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 29
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 11
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 28
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 27
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 12
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 34
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 27
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
 Disk Writes: 1
 Disk Reads: 1
-Time is 21
+Time is 9
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
@@ -81,112 +18,77 @@ Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
 Disk Writes: 1
 Disk Reads: 1
+Time is 2
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 3296
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 7
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 2
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
 Time is 1
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1984
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1982
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1971
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1949
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1923
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1885
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 10
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 29
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 31
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1956
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 2003
-Sorting input.txt of size 4096
-The file input.txt is sorted with a size of 1 bytes!
-Number of Blocks in memory pool: 512
-Size of Blocks in Memery Pool: 8
-Disk Writes: 1048576
-Disk Reads: 2097152
-Time is 1958
+Disk Writes: 1
+Disk Reads: 1
+Time is 8
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
 Disk Writes: 1
 Disk Reads: 1
-Time is 5
+Time is 2
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
 Disk Writes: 1
 Disk Reads: 1
-Time is 21
+Time is 3
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
 Disk Writes: 1
 Disk Reads: 1
-Time is 20
+Time is 9
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 2
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
@@ -200,7 +102,116 @@ Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
 Disk Writes: 1
 Disk Reads: 1
-Time is 17
+Time is 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 2
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 8
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 2
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 10
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 3
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 7
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of  bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 2048
+Disk Reads: 4096
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 9
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 2
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
@@ -212,41 +223,41 @@ Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 19
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 29
+Disk Writes: 1
+Disk Reads: 1
+Time is 0
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 4096
-Time is 30
+Disk Writes: 1
+Disk Reads: 1
+Time is 12898
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 2048
-Time is 50
+Disk Writes: 1
+Disk Reads: 1
+Time is 8
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 2048
-Time is 16
+Disk Writes: 1
+Disk Reads: 1
+Time is 1
 Sorting input.txt of size 4096
 The file input.txt is sorted with a size of 1 bytes!
 Number of Blocks in memory pool: 512
 Size of Blocks in Memery Pool: 8
-Disk Writes: 2048
-Disk Reads: 2048
-Time is 23
+Disk Writes: 1
+Disk Reads: 1
+Time is 2

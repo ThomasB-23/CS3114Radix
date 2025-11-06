@@ -8,7 +8,7 @@ import java.io.*;
  * @author Thomas Bongiorno (thomasb23) and Charles Patton (charpatt5414)
  * @version Milestone 1
  */
-public class Radix {
+public class Radix2 {
 
     private RandomAccessFile file;
     private PrintWriter stats;
@@ -32,7 +32,7 @@ public class Radix {
      *
      * @throws IOException
      */
-    public Radix(RandomAccessFile theFile, PrintWriter s) throws IOException {
+    public Radix2(RandomAccessFile theFile, PrintWriter s) throws IOException {
         file = theFile;
         stats = s;
         mem = new byte[900000];
@@ -66,37 +66,38 @@ public class Radix {
      */
     private void radixSort(RandomAccessFile tempFile, long totalRecords)
         throws IOException {
-        ByteBuffer input = ByteBuffer.wrap(mem, 0, BLOCK_SIZE);
-        ByteBuffer output = ByteBuffer.wrap(mem, 50000, BLOCK_SIZE);
-        ByteBuffer record = ByteBuffer.wrap(mem, 100000, RECORD_SIZE);
-        IntBuffer count = ByteBuffer.wrap(mem, 200000, RADIX * 4).asIntBuffer();
+        ByteBuffer input = ByteBuffer.wrap(mem, 0, 4096);
+        ByteBuffer output = ByteBuffer.wrap(mem, 10000, 14096);
+        ByteBuffer record = ByteBuffer.wrap(mem, 20000, 20008);
+        IntBuffer count = ByteBuffer.wrap(mem, 50000, 51000).asIntBuffer();
 
-        int totalBlocks = (int)totalRecords * RECORD_SIZE / BLOCK_SIZE;
+        long totalBlocks = totalRecords * RECORD_SIZE / BLOCK_SIZE;
 
         // For number of blocks
         for (int blockIndex = 0; blockIndex < totalBlocks; blockIndex++) {
             file.seek(blockIndex * BLOCK_SIZE);
             file.readFully(input.array(), 0, BLOCK_SIZE);
             diskReads++;
-
+            
             // For number of records
             for (int pass = 0; pass < 4; pass++) {
-
+                
                 for (int i = 0; i < RADIX; i++) {
                     count.put(i, 0);
                 }
-
+                
                 // Count occurences of each byte value
                 input.position(0);
-                for (int rec = 0; rec < RECORDS_PER_BLOCK; rec++) {
-                    int b = (input.getInt() >> (pass * 8)) & 0xFF;
+                for (int rec = 0; rec < totalRecords; rec++) {
+                    int key = input.getInt();
                     input.getInt();
+                    int b = (key >>> (pass * 8)) & 0xFF;
                     count.put(b, count.get(b) + 1);
                 }
 
                 // Transform count into starting positions
-                int total = RECORDS_PER_BLOCK;
-                for (int i = RADIX - 4 ; i >= 0; i--) {
+                int total = (int)totalRecords;
+                for (int i = RADIX - 1; i >= 0; i--) {
                     int oldCount = count.get(i);
                     total -= oldCount;
                     count.put(i, total);
@@ -108,21 +109,18 @@ public class Radix {
                 for (int rec = 0; rec < RECORDS_PER_BLOCK; rec++) {
                     int key = input.getInt();
                     int data = input.getInt();
-                    int b = (key >> (pass * 8)) & 0xFF;
-                    int pos = count.get(b);
+                    int b = (key >>> (pass * 8)) & 0xFF;
+                    int pos = count.get(b) * RECORD_SIZE;
                     output.position(pos);
                     output.putInt(key);
                     output.putInt(data);
                     count.put(b, count.get(b) + 1);
                 }
 
-                // Copy B back into the input
-                input.position(0);
-                output.position(0);
-                input.clear();
-                input.put(output);
+                // Copy B back into the file
+                System.arraycopy(mem, BLOCK_SIZE, mem, 0, BLOCK_SIZE);
             }
-
+            
             file.seek(blockIndex * BLOCK_SIZE);
             file.write(mem, 0, BLOCK_SIZE);
             diskWrites++;
