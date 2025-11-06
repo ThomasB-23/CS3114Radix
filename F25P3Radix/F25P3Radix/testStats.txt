@@ -229,3 +229,24 @@ Size of Blocks in Memery Pool: 8
 Disk Writes: 2048
 Disk Reads: 4096
 Time is 30
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 2048
+Disk Reads: 2048
+Time is 50
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 2048
+Disk Reads: 2048
+Time is 16
+Sorting input.txt of size 4096
+The file input.txt is sorted with a size of 1 bytes!
+Number of Blocks in memory pool: 512
+Size of Blocks in Memery Pool: 8
+Disk Writes: 2048
+Disk Reads: 2048
+Time is 23
