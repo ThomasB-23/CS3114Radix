@@ -67,11 +67,12 @@ public class Radix {
     private void radixSort(RandomAccessFile tempFile, long totalRecords)
         throws IOException {
         ByteBuffer input = ByteBuffer.wrap(mem, 0, BLOCK_SIZE);
-        ByteBuffer output = ByteBuffer.wrap(mem, 50000, BLOCK_SIZE);
+        ByteBuffer output = ByteBuffer.wrap(mem, 50000, BLOCK_SIZE + BLOCK_SIZE + 1);
         ByteBuffer record = ByteBuffer.wrap(mem, 100000, RECORD_SIZE);
         IntBuffer count = ByteBuffer.wrap(mem, 200000, RADIX * 4).asIntBuffer();
-
-        int totalBlocks = (int)totalRecords * RECORD_SIZE / BLOCK_SIZE;
+        
+        int totalBlocks = (int)((totalRecords * RECORD_SIZE + BLOCK_SIZE - 1)
+            / BLOCK_SIZE);
 
         // For number of blocks
         for (int blockIndex = 0; blockIndex < totalBlocks; blockIndex++) {
@@ -96,7 +97,7 @@ public class Radix {
 
                 // Transform count into starting positions
                 int total = RECORDS_PER_BLOCK;
-                for (int i = RADIX - 4 ; i >= 0; i--) {
+                for (int i = RADIX - 1; i >= 0; i--) {
                     int oldCount = count.get(i);
                     total -= oldCount;
                     count.put(i, total);
@@ -104,23 +105,23 @@ public class Radix {
 
                 // Put records into bins
                 input.position(0);
-                output.position(0);
+                output.clear();
+                output.limit(BLOCK_SIZE + RECORD_SIZE);
                 for (int rec = 0; rec < RECORDS_PER_BLOCK; rec++) {
                     int key = input.getInt();
                     int data = input.getInt();
                     int b = (key >> (pass * 8)) & 0xFF;
-                    int pos = count.get(b);
-                    output.position(pos);
-                    output.putInt(key);
-                    output.putInt(data);
+                    int pos = count.get(b) * RECORD_SIZE;
+                    insertInt(key, 50000 + pos);
+                    insertInt(data, 50004 + pos);
                     count.put(b, count.get(b) + 1);
                 }
 
                 // Copy B back into the input
                 input.position(0);
-                output.position(0);
-                input.clear();
-                input.put(output);
+                for (int i = 0; i < BLOCK_SIZE; i++) {
+                    input.put(i,mem[50000 + i]);
+                }
             }
 
             file.seek(blockIndex * BLOCK_SIZE);
@@ -128,5 +129,18 @@ public class Radix {
             diskWrites++;
         }
 
+    }
+    /**
+     * 
+     */
+    private void insertInt(int a, int b) {
+        mem[b] = 0;
+        mem[b + 1] = 0;
+        mem[b + 2] = 0;
+        mem[b + 3] = 0;
+        
+        for (int i = 3; i >= 0; i--) {
+            mem[b + (3 - i)] = (byte) (a >> i * 8);
+        }
     }
 }
