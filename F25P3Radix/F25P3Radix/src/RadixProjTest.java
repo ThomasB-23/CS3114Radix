@@ -46,7 +46,7 @@ public class RadixProjTest extends TestCase {
      */
     public void testSortA() throws Exception {
         FileGenerator it = new FileGenerator();
-        it.generateFile("input.txt", 1, "a");
+        it.generateFile("input.txt", 100, "a");
         String[] arr = {"input.txt", "testStats.txt"};
         idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
@@ -62,7 +62,7 @@ public class RadixProjTest extends TestCase {
      */
     public void testSortB() throws Exception {
         FileGenerator it = new FileGenerator();
-        it.generateFile("input.txt", 10, "b");
+        it.generateFile("input.txt", 100, "b");
         String[] arr = {"input.txt", "testStats.txt"};
         idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
@@ -78,7 +78,7 @@ public class RadixProjTest extends TestCase {
      */
     public void testSortC() throws Exception {
         FileGenerator it = new FileGenerator();
-        it.generateFile("input.txt", 10, "c");
+        it.generateFile("input.txt", 100, "c");
         String[] arr = {"input.txt", "testStats.txt"};
         idk.main(arr);
         assertTrue(fileChecker.checkFile("input.txt"));
